@@ -84,9 +84,12 @@ export default class Blind extends Component {
 
     return lines.map((line, i) =>
       <span className="blind-blind" key={line}>
-        <span className={`blind-text ${moving ? 'blind-moving' : ''}`} style={{
-          transition: `ease transform ${msPerLine}ms ${i * msPerLine}ms`
-        }}>
+        <span
+          className={`blind-text ${moving ? 'blind-moving' : ''}`}
+          style={{
+            transition: `ease transform ${msPerLine}ms ${i * msPerLine}ms`
+          }}
+        >
           {line}
         </span>
       </span>
