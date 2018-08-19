@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import './blind.css'
 import PropTypes from 'prop-types';
 
+const englishCharacters = /^[A-Za-z0-9]*$/;
+
 export default class Blind extends Component {
   static propTypes = {
     className: PropTypes.string,
@@ -23,22 +25,35 @@ export default class Blind extends Component {
     let line = '';
     let word = '';
     let lastHeight = 0;
+    let lineHeight = 0;
 
     for (let i = 0; i < text.length; i++) {
-      word += text[i];
-      this.container.current.innerHTML += text[i];
+      const letter = text[i];
+
+      if (!englishCharacters.test(letter)) {
+        line += word;
+        word = letter;
+      } else {
+        word += letter;
+      }
+
+      this.container.current.innerHTML += letter;
 
       if (lastHeight === 0) {
         lastHeight = container.offsetHeight;
+        lineHeight = container.offsetHeight;
       }
 
-      if (container.offsetHeight !== lastHeight && lastHeight !== 0) {
+      // This calculation may seem odd - some characters have different heights
+      // and can make the container taller.
+      if (container.offsetHeight > lastHeight + lineHeight / 2 && lastHeight !== 0) {
+        console.log(container.offsetHeight, lastHeight)
+        console.log(line);
         lines.push(line);
         line = word;
         word = '';
         lastHeight = container.offsetHeight;
-      } else if ([' ', '-', '–', '—'].indexOf(text[i]) > -1) {
-        console.log(word);
+      } else if ([' ', '-', '–', '—'].indexOf(letter) > -1) {
         line += word;
         word = '';
       }

@@ -10,23 +10,26 @@ class App extends Component {
       <div>
         <Blind
           className="first"
-          text="プライバシーポリシーま Text in English."
+          text="Foreign character test プライバシーポリシーま Text in English."
           msPerLine={500}
         />
-        <Blind 
+        <Blind
           className="longer"
-          text="This is an example of a longer piece of writing that all comes in line by line." 
+          text="This is an example of a longer piece of writing that all comes in line by line really slowly"
           msPerLine={1500}
         />
         <Blind
-          className="big" 
-          text="This is a bit of big text" 
-          msPerLine={2200}
+          className="big"
+          text="This is a bit of big text"
+          msPerLine={220}
         />
         <Blind
           className="line-height"
-          text="This text has a bigger line-height. It's long enough to show how well it wraps around."
-          msPerLine={600}
+          text="
+            This text has a bigger line-height. It's long enough to show how well it wraps around.
+            This text has a bigger line-height. It's long enough to show how well it wraps around.
+          "
+          msPerLine={300}
         />
         <Blind
           className="lots"
