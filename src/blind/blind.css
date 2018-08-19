@@ -1,0 +1,15 @@
+.blind-blind {
+  overflow: hidden;
+  display: block;
+  line-height: inherit;
+}
+
+.blind-text {
+  transform: translateY(100%);
+  display: block;
+  line-height: inherit;
+}
+
+.blind-text.blind-moving {
+  transform: translateY(0px);
+}
