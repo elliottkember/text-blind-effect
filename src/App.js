@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Blind from './blind';
+import Blind from 'text-blinds';
 import './App.css';
 
 class App extends Component {
